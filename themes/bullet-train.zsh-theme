@@ -24,14 +24,7 @@ if [ ! -n "${BULLETTRAIN_PROMPT_ORDER+1}" ]; then
     context
     dir
     screen
-    perl
-    ruby
     virtualenv
-    nvm
-    aws
-    go
-    rust
-    elixir
     git
     hg
     cmd_exec_time
