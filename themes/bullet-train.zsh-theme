@@ -24,9 +24,14 @@ if [ ! -n "${BULLETTRAIN_PROMPT_ORDER+1}" ]; then
     context
     dir
     screen
+    perl
+    ruby
     virtualenv
-    git
-    hg
+    nvm
+    aws
+    go
+    rust
+    elixir
     cmd_exec_time
   )
 fi
@@ -69,13 +74,13 @@ fi
 
 # CUSTOM
 if [ ! -n "${BULLETTRAIN_CUSTOM_MSG+1}" ]; then
-  BULLETTRAIN_CUSTOM_MSG=True
+  BULLETTRAIN_CUSTOM_MSG='its_high_time'
 fi
 if [ ! -n "${BULLETTRAIN_CUSTOM_BG+1}" ]; then
-  BULLETTRAIN_CUSTOM_BG=black
+  BULLETTRAIN_CUSTOM_BG=white
 fi
 if [ ! -n "${BULLETTRAIN_CUSTOM_FG+1}" ]; then
-  BULLETTRAIN_CUSTOM_FG=default
+  BULLETTRAIN_CUSTOM_FG=black
 fi
 
 # VIRTUALENV
@@ -90,97 +95,110 @@ if [ ! -n "${BULLETTRAIN_VIRTUALENV_PREFIX+1}" ]; then
 fi
 
 
-# GIT
-if [ ! -n "${BULLETTRAIN_GIT_COLORIZE_DIRTY+1}" ]; then
-  BULLETTRAIN_GIT_COLORIZE_DIRTY=false
+
+# AWS
+if [ ! -n "${BULLETTRAIN_AWS_BG+1}" ]; then
+  BULLETTRAIN_AWS_BG=yellow
 fi
-if [ ! -n "${BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR+1}" ]; then
-  BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR=black
+if [ ! -n "${BULLETTRAIN_AWS_FG+1}" ]; then
+  BULLETTRAIN_AWS_FG=black
 fi
-if [ ! -n "${BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR+1}" ]; then
-  BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR=yellow
+if [ ! -n "${BULLETTRAIN_AWS_PREFIX+1}" ]; then
+  BULLETTRAIN_AWS_PREFIX="☁️"
 fi
-if [ ! -n "${BULLETTRAIN_GIT_BG+1}" ]; then
-  BULLETTRAIN_GIT_BG=white
+
+# RUBY
+if [ ! -n "${BULLETTRAIN_RUBY_BG+1}" ]; then
+  BULLETTRAIN_RUBY_BG=red
 fi
-if [ ! -n "${BULLETTRAIN_GIT_FG+1}" ]; then
-  BULLETTRAIN_GIT_FG=black
+if [ ! -n "${BULLETTRAIN_RUBY_FG+1}" ]; then
+  BULLETTRAIN_RUBY_FG=white
 fi
-if [ ! -n "${BULLETTRAIN_GIT_EXTENDED+1}" ]; then
-  BULLETTRAIN_GIT_EXTENDED=true
+if [ ! -n "${BULLETTRAIN_RUBY_PREFIX+1}" ]; then
+  BULLETTRAIN_RUBY_PREFIX=♦️
 fi
-if [ ! -n "${BULLETTRAIN_GIT_PROMPT_CMD+1}" ]; then
-  BULLETTRAIN_GIT_PROMPT_CMD="\$(git_prompt_info)"
+
+# Go
+if [ ! -n "${BULLETTRAIN_GO_BG+1}" ]; then
+  BULLETTRAIN_GO_BG=cyan
+fi
+if [ ! -n "${BULLETTRAIN_GO_FG+1}" ]; then
+  BULLETTRAIN_GO_FG=white
+fi
+if [ ! -n "${BULLETTRAIN_GO_PREFIX+1}" ]; then
+  BULLETTRAIN_GO_PREFIX="go"
+fi
+
+# Rust
+if [ ! -n "${BULLETTRAIN_RUST_BG+1}" ]; then
+  BULLETTRAIN_RUST_BG=black
+fi
+if [ ! -n "${BULLETTRAIN_RUST_FG+1}" ]; then
+  BULLETTRAIN_RUST_FG=white
+fi
+if [ ! -n "${BULLETTRAIN_RUST_PREFIX+1}" ]; then
+  BULLETTRAIN_RUST_PREFIX="🦀"
+fi
+
+# Kubernetes Context
+if [ ! -n "${BULLETTRAIN_KCTX_BG+1}" ]; then
+  BULLETTRAIN_KCTX_BG=yellow
+fi
+if [ ! -n "${BULLETTRAIN_KCTX_FG+1}" ]; then
+  BULLETTRAIN_KCTX_FG=white
+fi
+if [ ! -n "${BULLETTRAIN_KCTX_PREFIX+1}" ]; then
+  BULLETTRAIN_KCTX_PREFIX="⎈"
+fi
+
+# ELIXIR
+if [ ! -n "${BULLETTRAIN_ELIXIR_BG+1}" ]; then
+  BULLETTRAIN_ELIXIR_BG=magenta
+fi
+if [ ! -n "${BULLETTRAIN_ELIXIR_FG+1}" ]; then
+  BULLETTRAIN_ELIXIR_FG=white
+fi
+if [ ! -n "${BULLETTRAIN_ELIXIR_PREFIX+1}" ]; then
+  BULLETTRAIN_ELIXIR_PREFIX="💧"
+fi
+
+# DIR
+if [ ! -n "${BULLETTRAIN_DIR_BG+1}" ]; then
+  BULLETTRAIN_DIR_BG=blue
+fi
+if [ ! -n "${BULLETTRAIN_DIR_FG+1}" ]; then
+  BULLETTRAIN_DIR_FG=white
+fi
+if [ ! -n "${BULLETTRAIN_DIR_CONTEXT_SHOW+1}" ]; then
+  BULLETTRAIN_DIR_CONTEXT_SHOW=false
+fi
+if [ ! -n "${BULLETTRAIN_DIR_EXTENDED+1}" ]; then
+  BULLETTRAIN_DIR_EXTENDED=1
 fi
 
 
+# PERL
+if [ ! -n "${BULLETTRAIN_PERL_BG+1}" ]; then
+  BULLETTRAIN_PERL_BG=yellow
+fi
+if [ ! -n "${BULLETTRAIN_PERL_FG+1}" ]; then
+  BULLETTRAIN_PERL_FG=black
+fi
+if [ ! -n "${BULLETTRAIN_PERL_PREFIX+1}" ]; then
+  BULLETTRAIN_PERL_PREFIX=🐪
+fi
 
-# GIT PROMPT
-if [ ! -n "${BULLETTRAIN_GIT_PREFIX+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_PREFIX="\ue0a0 "
-else
-  ZSH_THEME_GIT_PROMPT_PREFIX=$BULLETTRAIN_GIT_PREFIX
+# CONTEXT
+if [ ! -n "${BULLETTRAIN_CONTEXT_BG+1}" ]; then
+  BULLETTRAIN_CONTEXT_BG=black
 fi
-if [ ! -n "${BULLETTRAIN_GIT_SUFFIX+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_SUFFIX=""
-else
-  ZSH_THEME_GIT_PROMPT_SUFFIX=$BULLETTRAIN_GIT_SUFFIX
+if [ ! -n "${BULLETTRAIN_CONTEXT_FG+1}" ]; then
+  BULLETTRAIN_CONTEXT_FG=default
 fi
-if [ ! -n "${BULLETTRAIN_GIT_DIRTY+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_DIRTY=" %F{red}✘%F{black}"
-else
-  ZSH_THEME_GIT_PROMPT_DIRTY=$BULLETTRAIN_GIT_DIRTY
+if [ ! -n "${BULLETTRAIN_CONTEXT_HOSTNAME+1}" ]; then
+  BULLETTRAIN_CONTEXT_HOSTNAME=%m
 fi
-if [ ! -n "${BULLETTRAIN_GIT_CLEAN+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_CLEAN=" %F{green}✔%F{black}"
-else
-  ZSH_THEME_GIT_PROMPT_CLEAN=$BULLETTRAIN_GIT_CLEAN
-fi
-if [ ! -n "${BULLETTRAIN_GIT_ADDED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_ADDED=" %F{green}✚%F{black}"
-else
-  ZSH_THEME_GIT_PROMPT_ADDED=$BULLETTRAIN_GIT_ADDED
-fi
-if [ ! -n "${BULLETTRAIN_GIT_MODIFIED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_MODIFIED=" %F{blue}✹%F{black}"
-else
-  ZSH_THEME_GIT_PROMPT_MODIFIED=$BULLETTRAIN_GIT_MODIFIED
-fi
-if [ ! -n "${BULLETTRAIN_GIT_DELETED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_DELETED=" %F{red}✖%F{black}"
-else
-  ZSH_THEME_GIT_PROMPT_DELETED=$BULLETTRAIN_GIT_DELETED
-fi
-if [ ! -n "${BULLETTRAIN_GIT_UNTRACKED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_UNTRACKED=" %F{yellow}✭%F{black}"
-else
-  ZSH_THEME_GIT_PROMPT_UNTRACKED=$BULLETTRAIN_GIT_UNTRACKED
-fi
-if [ ! -n "${BULLETTRAIN_GIT_RENAMED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_RENAMED=" ➜"
-else
-  ZSH_THEME_GIT_PROMPT_RENAMED=$BULLETTRAIN_GIT_RENAMED
-fi
-if [ ! -n "${BULLETTRAIN_GIT_UNMERGED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_UNMERGED=" ═"
-else
-  ZSH_THEME_GIT_PROMPT_UNMERGED=$BULLETTRAIN_GIT_UNMERGED
-fi
-if [ ! -n "${BULLETTRAIN_GIT_AHEAD+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_AHEAD=" ⬆"
-else
-  ZSH_THEME_GIT_PROMPT_AHEAD=$BULLETTRAIN_GIT_AHEAD
-fi
-if [ ! -n "${BULLETTRAIN_GIT_BEHIND+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_BEHIND=" ⬇"
-else
-  ZSH_THEME_GIT_PROMPT_BEHIND=$BULLETTRAIN_GIT_BEHIND
-fi
-if [ ! -n "${BULLETTRAIN_GIT_DIVERGED+1}" ]; then
-  ZSH_THEME_GIT_PROMPT_DIVERGED=" ⬍"
-else
-  ZSH_THEME_GIT_PROMPT_DIVERGED=$BULLETTRAIN_GIT_PROMPT_DIVERGED
-fi
+
 
 # SCREEN
 if [ ! -n "${BULLETTRAIN_SCREEN_BG+1}" ]; then
@@ -297,65 +315,9 @@ prompt_custom() {
   [[ -n "${custom_msg}" ]] && prompt_segment $BULLETTRAIN_CUSTOM_BG $BULLETTRAIN_CUSTOM_FG "${custom_msg}"
 }
 
-# Git
-prompt_git() {
-  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" == "1" ]]; then
-    return
-  fi
 
-  local ref dirty mode repo_path git_prompt
-  repo_path=$(git rev-parse --git-dir 2>/dev/null)
 
-  if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-    if [[ $BULLETTRAIN_GIT_COLORIZE_DIRTY == true && -n $(git status --porcelain --ignore-submodules) ]]; then
-      BULLETTRAIN_GIT_BG=$BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR
-      BULLETTRAIN_GIT_FG=$BULLETTRAIN_GIT_COLORIZE_DIRTY_FG_COLOR
-    fi
-    prompt_segment $BULLETTRAIN_GIT_BG $BULLETTRAIN_GIT_FG
 
-    eval git_prompt=${BULLETTRAIN_GIT_PROMPT_CMD}
-    if [[ $BULLETTRAIN_GIT_EXTENDED == true ]]; then
-      echo -n ${git_prompt}$(git_prompt_status)
-    else
-      echo -n ${git_prompt}
-    fi
-  fi
-}
-
-prompt_hg() {
-  local rev status
-  if $(hg id >/dev/null 2>&1); then
-    if $(hg prompt >/dev/null 2>&1); then
-      if [[ $(hg prompt "{status|unknown}") = "?" ]]; then
-        # if files are not added
-        prompt_segment red white
-        st='±'
-      elif [[ -n $(hg prompt "{status|modified}") ]]; then
-        # if any modification
-        prompt_segment yellow black
-        st='±'
-      else
-        # if working copy is clean
-        prompt_segment green black
-      fi
-      echo -n $(hg prompt "☿ {rev}@{branch}") $st
-    else
-      st=""
-      rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
-      branch=$(hg id -b 2>/dev/null)
-      if $(hg st | grep -Eq "^\?"); then
-        prompt_segment red black
-        st='±'
-      elif $(hg st | grep -Eq "^(M|A)"); then
-        prompt_segment yellow black
-        st='±'
-      else
-        prompt_segment green black
-      fi
-      echo -n "☿ $rev@$branch" $st
-    fi
-  fi
-}
 
 # Dir: current working directory
 prompt_dir() {
@@ -377,7 +339,73 @@ prompt_dir() {
   prompt_segment $BULLETTRAIN_DIR_BG $BULLETTRAIN_DIR_FG $dir
 }
 
-#
+# RUBY
+# RVM: only shows RUBY info if on a gemset that is not the default one
+# RBENV: shows current ruby version active in the shell; also with non-global gemsets if any is active
+# CHRUBY: shows current ruby version active in the shell
+prompt_ruby() {
+  if command -v rvm-prompt > /dev/null 2>&1; then
+    prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX" $(rvm-prompt i v g)"
+  elif command -v chruby > /dev/null 2>&1; then
+    prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX"  $(chruby | sed -n -e 's/ \* //p')"
+  elif command -v rbenv > /dev/null 2>&1; then
+    current_gemset() {
+      echo "$(rbenv gemset active 2&>/dev/null | sed -e 's/ global$//')"
+    }
+
+    if [[ -n $(current_gemset) ]]; then
+      prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX" $(royal)"
+    else
+      prompt_segment $BULLETTRAIN_RUBY_BG $BULLETTRAIN_RUBY_FG $BULLETTRAIN_RUBY_PREFIX" $(rbenv version | sed -e 's/ (set.*$//')"
+    fi
+  fi
+}
+
+# ELIXIR
+prompt_elixir() {
+  if command -v elixir > /dev/null 2>&1; then
+    prompt_segment $BULLETTRAIN_ELIXIR_BG $BULLETTRAIN_ELIXIR_FG $BULLETTRAIN_ELIXIR_PREFIX" $(elixir -v | tail -n 1 | awk '{print $2}')"
+  fi
+}
+
+# PERL
+# PLENV: shows current PERL version active in the shell
+prompt_perl() {
+  if command -v plenv > /dev/null 2>&1; then
+    prompt_segment $BULLETTRAIN_PERL_BG $BULLETTRAIN_PERL_FG $BULLETTRAIN_PERL_PREFIX" $(royal)"
+  fi
+}
+
+# Go
+prompt_go() {
+  setopt extended_glob
+  if [[ (-f *.go(#qN) || -d Godeps || -f glide.yaml) ]]; then
+    if command -v go > /dev/null 2>&1; then
+      prompt_segment $BULLETTRAIN_GO_BG $BULLETTRAIN_GO_FG $BULLETTRAIN_GO_PREFIX" $(+)"
+    fi
+  fi
+}
+
+# Rust
+prompt_rust() {
+  if [[ (-f Cargo.toml) ]]; then
+    if command -v rustc > /dev/null 2>&1; then
+      prompt_segment $BULLETTRAIN_RUST_BG $BULLETTRAIN_RUST_FG $BULLETTRAIN_RUST_PREFIX" $(rustc -V version | cut -d' ' -f2)"
+    fi
+  fi
+}
+
+# Kubernetes Context
+prompt_kctx() {
+  if [[ ! -n $BULLETTRAIN_KCTX_KCONFIG ]]; then
+    return
+  fi
+  if command -v kubectl > /dev/null 2>&1; then
+    if [[ -f $BULLETTRAIN_KCTX_KCONFIG ]]; then
+      prompt_segment $BULLETTRAIN_KCTX_BG $BULLETTRAIN_KCTX_FG $BULLETTRAIN_KCTX_PREFIX" $(cat $BULLETTRAIN_KCTX_KCONFIG|grep current-context| awk '{print $2}')"
+    fi  
+  fi
+}
 
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
@@ -389,7 +417,29 @@ prompt_virtualenv() {
   fi
 }
 
+# NVM: Node version manager
+prompt_nvm() {
+  local nvm_prompt
+  if type nvm >/dev/null 2>&1; then
+    nvm_prompt=$(nvm current 2>/dev/null)
+    [[ "${nvm_prompt}x" == "x" ]] && return
+  elif type node >/dev/null 2>&1; then
+    nvm_prompt="$(node --version)"
+  else
+    return
+  fi
+  nvm_prompt=${nvm_prompt}
+  prompt_segment $BULLETTRAIN_NVM_BG $BULLETTRAIN_NVM_FG $BULLETTRAIN_NVM_PREFIX$nvm_prompt
+}
 
+#AWS Profile
+prompt_aws() {
+  local spaces="  "
+
+  if [[ -n "$AWS_PROFILE" ]]; then
+    prompt_segment $BULLETTRAIN_AWS_BG $BULLETTRAIN_AWS_FG $BULLETTRAIN_AWS_PREFIX$spaces$AWS_PROFILE
+  fi
+}
 
 # SCREEN Session
 prompt_screen() {
